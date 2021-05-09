@@ -9,8 +9,10 @@ def decto(x, base):
 def change(n):
 
     s = decto(n, 2)
-    s = s + s[-2]
-    s = s + s[1]
+    if (n % 2 == 0):
+        s = s + '01'
+    else:
+        s = s + '10'
     n = int(s, base=2)
     return n
 
@@ -18,5 +20,5 @@ def change(n):
 # print(change(n))
 
 for i in range(2, 1000):
-    if change(i) <= 190:
+    if change(i) >= 138:
         print(i)

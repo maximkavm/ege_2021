@@ -1,13 +1,14 @@
-for i in range(0, 1000):
+for i in range(100, 1000):
     x = i
-    m = 0
-    s = 0
-    while x > 0:
-        d = x % 6
-        s += d
-        if d > m:
-            m = d
-        x = x // 6
-    if m == 3 and s == 10:
+    L = x
+    M = 65
+    if L % 2 == 0:
+        M = 52
+    while L != M:
+        if L > M:
+            L = L - M
+        else:
+            M = M - L
+    if M == 26:
         print(i)
-        break
+

@@ -4,7 +4,7 @@ for w in range(0, 2):
         for y in range(0, 2):
             for z in range(0, 2):
                 ###
-                F = ((x & (y | (not z)) & w) == (x <= ((not y) & z)))
+                F = ((y <= x) | ((not z) & w)) == (w == x)
                 ###
                 if F == True:
                     print(w, x, y, z)

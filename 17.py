@@ -6,10 +6,11 @@ def decto(x, base):
 
     return s
 
-sum = 0
+mx = 0
 cnt = 0
-for i in range(697, 3459):
-    if hex(i)[-1] == 'e' and decto(i, 7)[-1] == oct(i)[-1]:
-        sum += i
+for i in range(1016, 7937):
+    if i % 3 == 0 and i % 7 != 0 and i % 17 != 0 and i % 19 != 0 and i % 27 != 0:
         cnt += 1
-print(sum, cnt)
+        if mx < i:
+            mx = i
+print(cnt, mx)
