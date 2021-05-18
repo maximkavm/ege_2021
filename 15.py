@@ -4,11 +4,11 @@ def deli(n, m):
     else:
         return False
 
-for a in range(1, 1000):
+for A in range(1, 1000):
     b = True
     for x in range(0, 1000):
-        F = ((deli(x, a) & deli(x, 24) & (not deli(x, 16))) <= (not deli(x, a)))
+        F = ((A < 50) and ((not deli(x, A)) <= (deli(x, 10) <= (not deli(x, 18)))))
         if F == 0:
             b = False 
     if b == True:
-        print(a)
+        print(A)
