@@ -21,3 +21,4 @@ def f(h):
 for i in range (1,100):
     h = 10, i
     print (i, f(h))
+    Привет, как дела Андрей?
