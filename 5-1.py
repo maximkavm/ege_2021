@@ -20,5 +20,5 @@ def change(n):
 # print(change(n))
 
 for i in range(2, 1000):
-    if change(i) >= 138:
-        print(i)
+    if change(i) >= 81:
+        print(change(i))
