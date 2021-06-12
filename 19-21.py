@@ -7,7 +7,7 @@ def moves (h):
 @functools.lru_cache(maxsize=None)
 
 def f(h):
-    if (sum(h) >= 61):
+    if (sum(h) >= 40):
         return 'end'
     elif (any(f(x) == 'end' for x in moves(h))):
         return 'P1'
@@ -19,6 +19,5 @@ def f(h):
         return 'V2'
 
 for i in range (1,100):
-    h = 10, i
+    h = 9, i
     print (i, f(h))
-    Привет, как дела Андрей?
