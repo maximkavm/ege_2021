@@ -1,4 +1,4 @@
-def f(a, b) :
+2def f(a, b) :
     for i in range(a, b):
         k = 1
         d = 0
