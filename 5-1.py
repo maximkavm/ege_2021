@@ -9,7 +9,7 @@ def decto(x, base):
 
 def change(n):
     s = decto(n, 2)
-    if (n % 2 == 0):
+    if n % 2 == 0:
         s = s + '01'
     else:
         s = s + '10'
