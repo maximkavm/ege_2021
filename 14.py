@@ -5,5 +5,5 @@ def decto(x, base):
         x //= base 
     return s
 
-n = 4**590 + 8**350 - 2**1020 - 25
-print(decto(n, 2).count('0'))
+n = 9**8 + 3**24 - 18
+print(decto(n, 3).count('2'))

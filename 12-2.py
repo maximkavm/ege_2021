@@ -1,10 +1,7 @@
-s = '1' * 2018 + '3' * 2050
+s = 143 * '7'
 
-while '111' in s:
-    if '111' in s:
-        s = s.replace('111', '2', 1)
-    if '222' in s:
-        s = s.replace('222', '3', 1)
-    if '333' in s:
-        s = s.replace('333', '1', 1)
+while '777' in s:
+    s = s.replace('777', '22', 1)
+    s = s.replace('222', '7', 1)
+
 print(s)

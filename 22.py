@@ -1,14 +1,13 @@
-for i in range(100, 1000):
+for i in range(101, 1000):
     x = i
-    L = x
-    M = 65
-    if L % 2 == 0:
-        M = 52
+    L = x - 15
+    M = x + 20
     while L != M:
         if L > M:
             L = L - M
         else:
             M = M - L
-    if M == 26:
+    if M == 35:
         print(i)
+
 
