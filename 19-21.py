@@ -2,12 +2,12 @@ import functools
 
 def moves (h):
     a, b = h
-    return (a + 2, b), (a, b + 2), (a * 2, b), (a, b * 2)
+    return (a + 1, b), (a, b + 1), (a * 4, b), (a, b * 4)
 
 @functools.lru_cache(maxsize=None)
 
 def f(h):
-    if (sum(h) >= 79):
+    if (sum(h) >= 61):
         return 'end'
     elif (any(f(x) == 'end' for x in moves(h))):
         return 'P1'
@@ -19,5 +19,5 @@ def f(h):
         return 'V2'
 
 for i in range (1,100):
-    h = 9, i
+    h = 3, i
     print (i, f(h))
