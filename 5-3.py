@@ -13,10 +13,12 @@ def change(n):
         s = s + '0'
     else:
         s = s + '1'
+
     if s.count('1') % 2 == 0:
         s = s + '0'
     else:
         s = s + '1'
+
     n = int(s, base=2)
     return n
 
