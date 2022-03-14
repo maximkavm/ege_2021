@@ -1,38 +1,13 @@
-def dec_to_bin(n):
-    s = ""
-    while n > 0:
-        if n % 2 == 0:
-            s += "0"
-        else:
-            s += "1"
+def makeMagic(first, second):
+    senior = int(first[0]) + int(second[0])
+    middle = int(first[1]) + int(second[1])
+    junior = int(first[2]) + int(second[2])
 
-        n //= 2
+    array = [senior, middle, junior].sort(reverse=True)
 
-    return "".join(reversed(s))
-
-def decto(n, base):
-    s = ''
-    while n > 0:
-        s = str(n % base) + s
-        n //= base
-
+    s = str(array[0]) + str(array[1]) + str(array[2])
     return s
 
-def change(s):
-
-    if s.count("1") % 2 == 0:
-        s += "0"
-    else:
-        s += "1"
-
-    return s
-
-
-
-for i in range(100):
-    n = dec_to_bin(i)
-    if int(change(change(n)), 2) > 77:
+for i in range(100, 1000):
+    if makeMagic("486", str(i)) == str(13107):
         print(i)
-
-
-

@@ -1,4 +1,6 @@
 s = '>' + 20 * '3' + 22 * '4' + 10 * '5'
+print(s)
+
 while '>1' in s or '>2' in s or '>3' in s:
     if '>3' in s:
         s = s.replace('>3', '44>', 1)

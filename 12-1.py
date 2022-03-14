@@ -1,4 +1,5 @@
 s = 20 * [3] + 22 * [4] + 10 * [5]
+print(s)
 
 while s.max > 1 or s.max > 2 or s.max > 3:
     if s.max > 3:
