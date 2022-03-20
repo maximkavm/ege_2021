@@ -10,12 +10,12 @@ def f(h):
         return 'end'
     elif any(f(x) == 'end' for x in moves(h)):
         return 'p1'
-    elif all(f(x) == 'p1' for x in moves(h)):
+    elif all(f(x) == 'p1' for x in moves(h)): # for 19th use any
         return 'v1'
     elif any(f(x) == 'v1' for x in moves(h)):
         return 'p2'
     elif all(f(x) == 'p1' or f(x) == 'p2' for x in moves(h)):
         return 'v2'
 
-for i in range(1, 100):
-    print(i, f(i))
+for s in range(1, 100):
+    print(s, f(s))

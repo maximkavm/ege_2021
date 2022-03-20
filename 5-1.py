@@ -16,7 +16,6 @@ def change(n):
     n = int(s, base=2)
     return n
 
-
 # print(s)
 # print(change(n))
 

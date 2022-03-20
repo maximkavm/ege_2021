@@ -8,7 +8,6 @@ def dec_to_bin(n):
         n //= 2
     return s
 
-
 def change(s):
     if s.count('1') % 2:
         s += '1'
