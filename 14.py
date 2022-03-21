@@ -1,6 +1,5 @@
 def decto(x, base):
     s = ''
-
     while x > 0:
         s = str(x % base) + s
         x //= base

@@ -1,11 +1,9 @@
 def decto(x, base):
     s = ''
-    while x:
+    while x > 0:
         s = str(x % base) + s
         x //= base
-
     return s
-
 
 def change(n):
     s = decto(n, 2)

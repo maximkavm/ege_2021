@@ -2,8 +2,6 @@ a = []
 for n in range(160610, 160634+1):
     deliteli=[]
     sq = int(n**0.5)
-    if sq == n**0.5:
-        continue
     for d in range(2, sq+1):
         if n % d == 0:
             deliteli.append(d)

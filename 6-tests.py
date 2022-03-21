@@ -7,6 +7,6 @@ def f(s):
 
     return n
 
-for i in range(10000):
-    if f(i) == 64:
-        print(i)
+for s in range(10000):
+    if f(s) == 64:
+        print(s)
