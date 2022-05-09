@@ -1,7 +1,7 @@
-f = open('24.txt')
-s = f.readline()
-d = dict()
+file = open('24.txt')
+str = file.readline()
+dict = dict()
 for i in range(1, len(s)):
-    if s[i-1] == 'A':
-        d[s[i]] = d.get(s[i], 0) + 1
-print(d)
+    if str[i-1] == 'A':
+        dict[str[i]] = dict.get(str[i], 0) + 1
+print(dict)

@@ -2,6 +2,7 @@ f = open('24.txt')
 s = f.readline()
 cnt = 0
 max_cnt = 0
+i = 0
 while i < len(s):
     if s[i:i+3] == 'XYZ':
         cnt += 3
