@@ -1,22 +1,27 @@
 import functools
 
-def moves(heap):
-    return (heap + 1), (heap * 2)
 
+def moves (h):
+    a, b = h
+    return (a + 1, b), (a, b + 1), (a * 2, b), (a, b * 2)
+
+
+#@functools.lru_cache(maxsize=None)
 @functools.lru_cache(maxsize=None)
 
-def game(heap):
-    if heap >= 223:
+def game(kucha):
+    if sum(kucha) >= 231:
         return 'end'
-    elif any(game(x) == 'end' for x in moves(heap)):
-        return 'P1'
-    elif all(game(x) == 'P1' for x in moves(heap)):
-        return 'V1'
-    elif any(game(x) == 'V1' for x in moves(heap)):
-        return 'P2'
-    elif all(game(x) in {'P1', 'P2'} for x in moves(heap)):
-        return 'V2'
+    elif any(game(x) == 'end' for x in moves(kucha)):
+        return 'p1'
+    elif all(game(x) == 'p1' for x in moves(kucha)):
+        return 'v1'
+    elif any(game(x) == 'v1' for x in moves(kucha)):
+        return 'p2'
+    elif all(game(x) == 'p1' or game(x) == 'p2' for x in moves(kucha)):
+        return 'v2'
 
-for s in range(1, 210):
-    heap = s
-    print(s, game(heap))
+
+for i in range(1, 99):
+    h = (17, i)
+    print(game(h), i)
