@@ -1,27 +1,27 @@
 import functools
 
 
-def moves (h):
-    a, b = h
-    return (a + 1, b), (a, b + 1), (a * 2, b), (a, b * 2)
+def moves(kucha):
+    a, b = kucha
+    return (a + 1, b), (a * 2, b), (a, b + 1), (a, b * 2)
 
 
-#@functools.lru_cache(maxsize=None)
 @functools.lru_cache(maxsize=None)
 
-def game(kucha):
-    if sum(kucha) >= 231:
+
+def f(h):
+    if sum(h) >= 77:
         return 'end'
-    elif any(game(x) == 'end' for x in moves(kucha)):
-        return 'p1'
-    elif all(game(x) == 'p1' for x in moves(kucha)):
-        return 'v1'
-    elif any(game(x) == 'v1' for x in moves(kucha)):
-        return 'p2'
-    elif all(game(x) == 'p1' or game(x) == 'p2' for x in moves(kucha)):
-        return 'v2'
+    elif (any(f(x) == 'end' for x in moves(h))):
+        return 'P1'
+    elif (all(f(x) == 'P1' for x in moves(h))):  # for 19th use any
+        return 'V1'
+    elif (any(f(x) == 'V1' for x in moves(h))):
+        return 'P2'
+    elif (all(f(x) == 'P2' or f(x) == 'P1' for x in moves(h))):
+        return 'V2'
 
 
-for i in range(1, 99):
-    h = (17, i)
-    print(game(h), i)
+for i in range(9999):
+    h = 7, i
+    print(f(h), i)
