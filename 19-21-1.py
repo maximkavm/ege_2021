@@ -5,6 +5,7 @@ def moves(a):
 
 
 @functools.lru_cache(maxsize=None)
+
 def f(h):
     if h >= 65:
         return 'end'
