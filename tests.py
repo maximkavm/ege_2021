@@ -1,11 +1,13 @@
-file = open("tests.txt")
-s = file.readlines()
-lst = [int(i) for i in s]
-min_lst = min(lst)
-cnt = 0
-print(min_lst)
-for i in range(len(lst)):
-    if i == min_lst:
-        cnt += 1
+def f(x):
+    return x**3 - 3*x**2 - x + 3
 
-print(cnt)
+def simple_operation(x, a, b):
+    return x - f(x) * (b - a) / (f(b) - f(a))
+
+e = 0.001
+
+x = -1.5
+
+while f(x + e) * f(x - e) >= 0:
+    x = simple_operation(x, -1.5, -0.5)
+    print(x)
