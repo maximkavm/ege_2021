@@ -1,11 +1,17 @@
-result = -1
-for A in range(999999999):
+def d(x, y):
+    if x % y == 0:
+        return 1
+    else:
+        return 0
+
+for a in range(1000000):
     flag = True
-    for x in range(999):
-        for y in range(999):
-            F = ((2 * x + y) != 70) or (x < y) or (A < x)
-            if F == 0:
-                flag = False
+    for x in range(1000):
+        F = (d(x, 2) <= (not(d(x, 3)))) + (x + a >= 100)
+        if F == False:
+            flag = False
+            break
 
     if flag == True:
-        print(A)
+        print(a)
+        break

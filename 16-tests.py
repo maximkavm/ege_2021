@@ -1,9 +1,8 @@
-def f(n):
-    if n == 1:
-        return 1
-    if n % 2 == 0:
-        return n + f(n-1)
-    else:
-        return 2 * f(n-2)
+cache = [0, 1]
 
-print(f(26))
+n = 2
+for i in range(2, 2023 + 1):
+    cache.append(cache[i - 1] * i)
+
+
+print(cache[2023] / cache[2020])
