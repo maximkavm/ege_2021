@@ -1,50 +1,47 @@
 import sqlite3
 
-db = sqlite3.connect("1.db")
-sql = db.cursor()
+global data, columns
+data = []
+columns = ('id', 'name', 'age', 'weight', 'sex', 'type', 'owner')
 
+def get(filename):
+    with open(filename, 'r') as file:
+        for line in file:
+            line = line.split(',')
+            data.append((int(line[0]), line[1], int(line[2]), float(line[3]), line[4], line[5], line[6].replace('\n', '')))
+    return data
 
-sql.execute("""
-    CREATE TABLE IF NOT EXISTS departments
+def put(filename):
+    with open(filename, 'w') as file:
+        for val in data:
+            file.write(','.join([str(i) for i in val]) + '\n')
+
+database = sqlite3.connect('pets.db')
+cursor = database.cursor()
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS pets
     (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL
+        id INT,
+        name TEXT,
+        age INT,
+        weight REAL,
+        sex TEXT,
+        type TEXT,
+        owner TEXT
     )
-""")
-db.commit()
+''')
 
-sql.execute("""
-    INSERT OR REPLACE INTO departments
-    ([id], [name])
-    VALUES
-    (1, 'HR'),
-    (2, 'Sales'),
-    (3, 'Tech')
-""")
-db.commit()
 
-sql.execute("""
-    CREATE TABLE IF NOT EXISTS employees
-    (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        fname TEXT NOT NULL,
-        lname TEXT NOT NULL,
-        phone_number TEXT NOT NULL,
-        manager_id INTEGER REFERENCES employees(id),
-        departments_id INTEGER REFERENCES departments(id),
-        salary INTEGER NOT NULL,
-        hire_date DATETIME NOT NULL
-    )
-""")
-db.commit()
+data = get('tests.txt')
 
-sql.execute("""
-    INSERT OR REPLACE INTO employees 
-    ([id], [fname], [lname], [phone_number], [manager_id], [departments_id], [salary], [hire_date])
-    VALUES
-    (1, 'James', 'Smith', '12849238923', NULL, 1, 100, '01-01-2020'),
-    (2, 'John', 'Johnson', '12849238924', 1, 1, 50, '01-01-2021'),
-    (3, 'Michael', 'Williams', '12849238925', 1, 1, 50, '01-01-2021'),
-    (4, 'Johnathan', 'Smith', '12849238926', 2, 1, 50, '01-02-2021')
-""")
-db.commit()
+for n in data:
+    if n not in list(cursor.execute('SELECT * FROM pets')):
+        cursor.execute(f'INSERT INTO pets VALUES (?,?,?,?,?,?,?)', n)
+        database.commit()
+        print(f'Added {n}')
+    else:
+        print(f'User {n} is already in the database')
+
+for n in list(cursor.execute('SELECT * FROM pets')):
+    print(n)

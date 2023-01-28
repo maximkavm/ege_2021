@@ -1,8 +1,14 @@
 import itertools
 
-count = 0
-for x in itertools.product("ШКОЛА", repeat=3):
-    if "".join(x).count('К') == 1:
-        count += 1
+counter = 0
 
-print(count)
+for i in itertools.permutations('вуаль'):
+    word = ''.join(i)
+    if (word.count('в') == 1 and word.count('у') == 1
+        and word.count('а') == 1 and word.count('л') == 1
+        and word.count('ь') == 1 and word[0] != 'ь' and
+        word.count('ьу') == 0 and word.count('ьа') == 0):
+
+        counter += 1
+
+print(counter)
