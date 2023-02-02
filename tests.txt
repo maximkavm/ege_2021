@@ -1,2 +1,0 @@
-1,belka,5,30,f,dog,sasha
-2,strelka,6,25,m,dog,masha
