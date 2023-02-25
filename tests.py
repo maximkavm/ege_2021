@@ -1,6 +1,18 @@
-a = [[], [], [], [], [], [], [], [], [], []]
+def f(n):
+    #print(2 * n)
+    s = 2 * n
+    if n > 1:
+        #print(n - 5)
+        s += n - 5
+        #f(n - 1)
+        #f(n - 2)
+        return s + f(n-1) + f(n-2)
+    return  s
 
-for i in range(0, 2021):
-    a[(i*i*i) % 10].append(i)
-
-print(len(a[0]), len(a[1]),len(a[2]),len(a[3]),len(a[4]),len(a[5]),len(a[6]),len(a[7]),len(a[8]),len(a[9]))
+n = 0
+while True:
+    n += 1
+    s = f(n)
+    if s > 500000:
+        break
+print(n, s)

@@ -1,9 +1,12 @@
-def decto(x, base):
+def dec_to(number, base):
     s = ''
-    while x > 0:
-        s = str(x % base) + s
-        x //= base
+    while number > 0:
+        if number % base <= 9:
+            s = str(number % base) + s
+        number //= base
     return s
 
-n = 49**7 + 7**21 - 7
-print(decto(n, 7).count('6'))
+for i in range(2, 100):
+    num = dec_to(31, i)
+    if len(num) >= 2 and num[-1] == '1' and num[-2] == '1':
+        print(i)
