@@ -1,17 +1,22 @@
-def d(x, y):
-    if x % y == 0:
-        return 1
+def deli(n, m):
+    if n % m == 0:
+        return True
     else:
-        return 0
+        return False
 
-for a in range(1000000):
+def f(x, A):
+    F1 = deli(x, 2)
+    F2 = not deli(x, 3)
+    F3 = ((x + A) >= 100)
+    return (F1 <= F2) or F3
+
+for A in range(1000):
     flag = True
     for x in range(1000):
-        F = (d(x, 2) <= (not(d(x, 3)))) + (x + a >= 100)
-        if F == False:
+        if not f(x, A):
             flag = False
-            break
 
     if flag == True:
-        print(a)
+        print(A)
         break
+

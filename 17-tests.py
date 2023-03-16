@@ -1,12 +1,7 @@
-#Рассматривается множество целых чисел, принадлежащих числовому отрезку [1016; 7937], которые делятся на 3 и не
-# делятся на 7, 17, 19, 27. Найдите количество таких чисел и максимальное из них
+numbers = []
+for i in range(1012, 9368 + 1):
+    if i % 3 == 0 and i % 11 != 0 and i % 13 != 0 and i % 17 != 0 and i % 19 != 0:
+        numbers.append(i)
 
-cnt = 0
-max = 0
-
-for i in range(1016, 7937 + 1):
-    if i % 3 == 0 and i % 7 != 0 and i % 17 != 0 and i % 19 != 0 and i % 27 != 0:
-        cnt += 1
-        max = i
-
-print(cnt, max)
+print(numbers)
+print(len(numbers), max(numbers))
