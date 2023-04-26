@@ -1,23 +1,18 @@
-import functools
+from functools import cache
 
-def moves(h):
-    a, b = h
-    return (a + 1, b), (a * 2, b), (a, b + 1), (a, b * 2)
+def moves(heap):
+    a, b = heap
+    return (a + 1, b), (a, b + 1), (a * 4, b), (a, b * 4)
+@cache
+def game(heap):
+    if sum(heap) >= 61:
+        return 0
+    steps = [game(x) for x in moves(heap)]
+    if any(x % 2 == 0 for x in steps):
+        return min(x for x in steps if x % 2 == 0) + 1
+    else:
+        return max(steps) + 1
 
-@functools.lru_cache(maxsize=None)
-
-def f(h):
-    if sum(h) >= 77: # end
-        return 'end'
-    elif (any(f(x) == 'end' for x in moves(h))):
-        return 'P1'
-    elif (any(f(x) == 'P1' for x in moves(h))): #for 19th use any
-        return 'V1'
-    elif (any(f(x) == 'V1' for x in moves(h))):
-        return 'P2'
-    elif (all(f(x) == 'P2' or f(x) == 'P1' for x in moves(h))):
-        return 'V2'
-
-for s in range(1, 100):
-    h = 7, s
-    print(s, f(h))
+for s in range(57, 0, -1):
+    heap = (3, s)
+    print(s, ": ", game(heap), " | ", [game(x) for x in moves(heap)])
