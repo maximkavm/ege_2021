@@ -1,27 +1,14 @@
-def isPrime(n):
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
+for i in range(51, 100, 3):
+    n = i
+    s = (n // 3) * '1' + (n // 3) * '2' + (n // 3) * '3'
 
-def sumOfDigits(s):
-    sum = 0
-    for i in s:
-        if i in {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}:
-            sum += int(i)
-    return sum
+    while '21' in s or '31' in s or '32' in s:
+        if '21' in s:
+            s = s.replace('21', '12', 1)
+        if '31' in s:
+            s = s.replace('31', '13', 1)
+        if '32' in s:
+            s = s.replace('32', '23', 1)
 
-for n in range(1000):
-    s = '>' + 39 * '0' + n * '1' + 39 * '2'
-
-    while '>1' in s or '>2' in s or '>0' in s:
-        if '>1' in s:
-            s = s.replace('>1', '22>', 1)
-        if '>2' in s:
-            s = s.replace('>2', '2>', 1)
-        if '>0' in s:
-            s = s.replace('>0', '1>', 1)
-
-    if isPrime(sumOfDigits(s)):
+    if s[49] == '2':
         print(n)
-        break

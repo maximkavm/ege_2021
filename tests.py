@@ -1,17 +1,25 @@
+# 162
+
 file = open('tests.txt')
-lines = file.readlines()
-
+a = [0] * 150
 count = 0
+
+for s in file.readlines():
+    count += 1
+    k = 1
+    if count == 162:
+        for i in range(len(s)):
+            a[ord(s[i])] = a[ord(s[i])] + 1
+
+
+char = ''
 mx = 0
+for i in range(150):
+    if a[i] > mx:
+        mx = a[i]
+        char = chr(i)
 
-numbers = []
-for line in lines:
-    numbers.append(int(line))
+print(char)
 
-for i in range(len(numbers)):
-    for j in range(i + 1, len(numbers)):
-        if (numbers[i] + numbers[j]) % 9 == 0:
-            count += 1
-            mx = max(numbers[i]+numbers[j], mx)
-
-print(count, mx)
+s = open('tests.txt').read().count('K')
+print(s)
