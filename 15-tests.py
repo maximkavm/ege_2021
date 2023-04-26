@@ -1,22 +1,20 @@
-def deli(n, m):
-    if n % m == 0:
-        return True
+from functools import cache
+
+def moves(heap):
+    a, b = heap
+    return (a + 1, b), (a, b + 1), (a * 2, b), (a, b * 2)
+
+@cache
+def game(heap):
+    if sum(heap) >= 77:
+        return 0
+    steps = [game(x) for x in moves(heap)]
+    if any(x % 2 == 0 for x in steps):
+        return min(x for x in steps if x % 2 == 0) + 1
     else:
-        return False
+        return max(steps) + 1
+    
 
-def f(x, A):
-    F1 = deli(x, 2)
-    F2 = not deli(x, 3)
-    F3 = ((x + A) >= 100)
-    return (F1 <= F2) or F3
-
-for A in range(1000):
-    flag = True
-    for x in range(1000):
-        if not f(x, A):
-            flag = False
-
-    if flag == True:
-        print(A)
-        break
-
+for s in range(69, 0, -1):
+    heap = (7, s)
+    print(s, " : ", game(heap), " | ", [game(x) for x in moves(heap)])
