@@ -1,15 +1,12 @@
-a = []
-for i in range(174457, 174505 + 1):
-    deliteli = []
-    sqr = int(i ** 0.5)
-    for d in range(2, sqr + 1):
-        if d * d == i:
-            deliteli.append(d)
-        if i % d == 0:
-            deliteli.append(d)
-            deliteli.append(i // d)
-        if len(deliteli) > 2:
+for i in range(700001, 800000):
+    b_delit = 0
+    m_delit = 0
+    for j in range(2, int(i ** 0.5) + 1):
+        if i % j == 0:
+            b_delit = i // j
+            m_delit = j
             break
-    if len(deliteli) == 2:
-        a.append(deliteli)
-print(a)
+
+    summ = b_delit + m_delit
+    if summ % 10 == 8:
+        print(i, summ)
